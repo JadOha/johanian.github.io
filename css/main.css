@@ -43,7 +43,7 @@ header > nav{
   height:100vh;
   font-size:40px;
   text-align:center;
-  background-color: #09295E;
+  background-color:#165FDE;
   color:white;
 
 }
@@ -53,62 +53,124 @@ header > nav{
   justify-content: center;
   align-items: center;
   height:100vh;
-  background-color:#165FDE;
+  background-color:#09295E;
   color:white;
 }
 
-figure{
-  display:grid;
-  gap:2px;
-  grid-template-columns: repeat(3,minmax(200px, 800px));
-  width:80%; /*change to whatever width you want */
-  margin:auto;
+*{
+	padding:0;
+	margin:0;
+    -webkit-transition: 1s;
+    transition: 1s;
+}
+.clrd-font{
+	background: #FF512F;
+	background: -webkit-linear-gradient(to right, #F09819, #FF512F);
+	background: linear-gradient(to right, #2996E6, #09295E);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
-/* This container is needed to position the overlay, adjust width as you like */
-.container{
-  position:relative;
-  width:100%;
+.single_portfolio_text{
+	display:inline-block;
+	padding:0;
+	position:relative;
+	overflow:hidden;
+}
+.single_portfolio_text img{
+	width:100%;
+  height:auto;
 }
 
-.images{
-  max-width: 100%;
-  min-width:100%;
-   height: auto;
-   margin: 0 auto;
-   padding: 0px;
+.single_portfolio_text:hover .portfolio_images_overlay{
+	top:5%;
+	left: 5%;
 }
 
-/* Make images responsive */
-.overlay{
-  position:absolute;
-  bottom:0;
-  right:0;
-  left:0;
-  background-color:rgba(155,155,155,.3);
-  width:100%;
-  height:100%;
-  overflow:hidden;
-  transform:scale(0);
-  transition:.4s ease;
+.portfolio_images_overlay{
+	width: 90%;
+	height: 90%;
+	background: rgba(0, 0, 0, 0.8);
+	padding: 20px;
+	margin: 0 auto;
+	top: -100%;
+	left: 5%;
+	position: absolute;
+	transition:.6s;
 
 }
-/* When you mouse over the container, the overlay will zoom a little */
-.container:hover .overlay{
-  transform: scale(1);
-  transition-delay:.2s;
+.portfolio_images_overlay h6{
+	text-transform: uppercase;
+	color: #fff;
+	font-size: 30px;
+	font-weight: 900;
+	border: 2px solid #fff;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
-.text{
-    color: white;
-    line-height: 1.5;
-    font-size: 25px;
+.portfolio_images_overlay .product_price{
+	font-size: 35px;
+	color: #fff;
+	font-weight:800;
+	line-height:30px;
+}
+.portfolio_images_overlay .product_price i{
+    margin-right: -10px;
+}
+.zoom{
+	width: 200px;
+    height: 200px;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    text-align: center;
-    transform: translate(-50%, -50%);
+    bottom: -100px;
+    right: -100px;
+    border-radius: 50%;
+
+	background: #FF512F;
+	background: -webkit-linear-gradient(to right, #165FDE,
+#09295E);
+/* #F09819, #FF512F */
+	background: linear-gradient(to right, #165FDE,
+#09295E);
+    box-shadow:0px 0px 0px 10px rgba(0,0,0,0.5);
+	opacity:0.9;
 }
+.zoom:before {
+	content: "\f00e";
+    font-family: FontAwesome;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 70px;
+    padding-right: 20px;
+    position: absolute;
+    top: 10px;
+    left: 30px;
+}
+@media (min-width:769px) and (max-width:991px) {
+	.portfolio_images_overlay {
+		padding: 0px;
+	}
+}
+@media (max-width:768px) {
+	.portfolio_images_overlay{
+		padding: 170px 20px;
+	}
+}
+@media (max-width:580px) {
+	.portfolio_images_overlay{
+		padding: 100px 20px;
+	}
+}
+@media (max-width:480px) {
+	.portfolio_images_overlay{
+		padding: 40px 20px;
+	}
+}
+@media (max-width:320px) {
+	.portfolio_images_overlay{
+		padding: 20px;
+	}
+}
+
 
 #resume{
   height:100vh;
@@ -118,6 +180,10 @@ figure{
 }
 
 address > a{
+  color:#C6D984;
+}
+
+address a:hover{
   color:#C6D984;
 }
 
@@ -323,16 +389,6 @@ a:hover nav{
     padding:40px;
   }
 
-  header > nav{
-    max-width:100vw;
-    display:flex;
-    flex-direction:row;
-    justify-content:center;
-    width:100vw;
-    background-color:white;
-    animation: Slide_Down 1.4s ease;
-  }
-
 
   .footer, .name, .address{
     flex-direction: column;
@@ -340,6 +396,7 @@ a:hover nav{
   }
 
   #resume{
+    height:auto;
     display:flex;
     flex-direction:column;
     justify-content: center;
